@@ -46,18 +46,42 @@ namespace Commerce.Controllers
         }
 
         [HttpPut("update/{id}")]
-        public IActionResult Update(int id, Sale sale)
+        public IActionResult Update(int id, StatusEnum status)
         {
-            var dbtask = _context.Sales.Find(id);
+           var sale = _context.Sales.Find(id);
 
-            if (dbtask == null)
+            if (sale == null){
                 return NotFound();
+            }
 
-            dbtask.Status = sale.Status;
-            _context.Sales.Update(dbtask);
+            if (sale.Status == StatusEnum.AWAITING_PAYMENT
+                && status == StatusEnum.APPROVED_PAYMENT
+                || sale.Status == StatusEnum.AWAITING_PAYMENT
+                && status == StatusEnum.CANCELED)
+            {
+                sale.Status = status;
+            }
+            else if (sale.Status == StatusEnum.APPROVED_PAYMENT 
+                    && status == StatusEnum.SHIPPED_TO_CARRIER
+                    || sale.Status == StatusEnum.APPROVED_PAYMENT 
+                    && status == StatusEnum.CANCELED)
+            {
+                sale.Status = status;
+            }
+            else if (sale.Status == StatusEnum.SHIPPED_TO_CARRIER 
+                    && status == StatusEnum.DELIVERED)
+            {
+                sale.Status = status;
+            }
+            else
+            {
+                return BadRequest($"{sale.Status} cannot go to {status}");
+            }
+
+            _context.Sales.Update(sale);
             _context.SaveChanges();
 
-            return Ok(dbtask);
+            return Ok("The sale has been updated");
         }
 
         [HttpDelete("delete/{id}")]
@@ -73,5 +97,6 @@ namespace Commerce.Controllers
             
             return NoContent();
         }
+        
     }
 }
