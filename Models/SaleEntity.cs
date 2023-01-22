@@ -2,12 +2,14 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 
+#nullable disable warnings
 namespace Commerce.Models
 {
      public class Sale
     {
         [Column("sale_id")]
         [Key]
+        [JsonIgnore]
         public int SaleId { get; set; }
 
         [Column("sale_name")]
@@ -25,13 +27,13 @@ namespace Commerce.Models
 
         [ForeignKey("ProductId")]
         [JsonIgnore]
-        public Product? Product { get; set; }
+        public virtual Product? Product { get; set; }
         
         [Column("sale_product_value_total")]
         public decimal TotalValueProduct { get; set; }
         
         [Column("sale_status")]
-        public StatusEnum Status { get; set; }
+        public StatusEnum? Status { get; set; }
 
         [Column("sale_created_at")]
         public DateTime CreatedAt { get; set; }

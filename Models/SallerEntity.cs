@@ -1,12 +1,15 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
+#nullable disable warnings
 namespace Commerce.Models
 {
     public class Saller
     {
         [Column("saller_id")]
         [Key]
+        [JsonIgnore]
         public int SallerId { get; set; }
 
         [Column("saller_name_saller")]

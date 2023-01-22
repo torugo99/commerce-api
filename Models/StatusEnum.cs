@@ -2,8 +2,9 @@ namespace Commerce.Models
 {
     public enum StatusEnum
     {
-        APPROVED,
-        SENT,
+        AWAITING_PAYMENT,
+        APPROVED_PAYMENT,
+        SHIPPED_TO_CARRIER,
         DELIVERED,
         CANCELED,
     }
