@@ -25,10 +25,20 @@ Minha aplicação em si é bem simples e com poucas entidades sendo elas:
 
 Assim como um enum, que me serve para ter o status do processo das vendas sendo eles:
 
-- Aproved (Aprovado).
-- Sent (Enviado).
-- Delivered (Entregue).
-- Canceled (Cancelado).
+- AWAITING_PAYMENT (Aguardando pagamento) = 0.
+- APPROVED_PAYMENT (Pagamento aprovado) = 1.
+- SHIPPED_TO_CARRIER (Enviado ao transportador) = 2.
+- DELIVERED (Entregue) = 3.
+- CANCELED (Cancelado) = 4.
+
+Os enumerados tem uma tratativa espacial na hora de sua atualização:
+
+    De: AWAITING_PAYMENT    Para: APPROVED_PAYMENT
+    De: AWAITING_PAYMENT    Para: CANCELED
+    De: APPROVED_PAYMENT    Para: SHIPPED_TO_CARRIER
+    De: APPROVED_PAYMENT    Para: CANCELED
+    De: SHIPPED_TO_CARRIER  Para: DELIVERED
+
 
 Aqui temos a relação das minhas tabelas:
 
@@ -77,7 +87,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 ```
 </p>
 </details>
-<br>
+
 <details><summary>Retorno dos Dados</summary>
 <p>
 
@@ -110,22 +120,69 @@ Ex: 02
 </p>
 </details>
 <br>
+
+### 🌐 | EndPoints:
 Os endpoint esperados estão funcinando perfeitamente como o esperado.
+
+<details><summary>Endpoints de Product</summary>
+<p>
+
+| Verbo  | Endpoint                | Parâmetro | Body           |
+|--------|-------------------------|-----------|----------------|
+| POST   | /Product/post/          | N/A       | Schema Product |
+| GET    | /Product/get-all/       | N/A       | N/A            |
+| GET    | /Product/get-by/{id}    | id        | N/A            |
+| PUT    | /Product/update/{id}    | id        | Schema Product |
+| DELETE | /Product/delete/{id}    | id        | N/A            |
+
+</p>
+</details>
+
+<details><summary>Endpoints de Sale</summary>
+<p>
+
+| Verbo  | Endpoint                | Parâmetro | Body          |
+|--------|-------------------------|-----------|---------------|
+| POST   | /Sale/post/             | N/A       | Schema Sale   |
+| GET    | /Sale/get-all/          | N/A       | N/A           |
+| GET    | /Sale/get-by/{id}       | id        | N/A           |
+| PUT    | /Sale/update/{id}       | id        | N/A           |
+| DELETE | /Sale/delete/{id}       | id        | N/A           |
+
+</p>
+</details>
+
+<details><summary>Endpoints de Saller</summary>
+<p>
+
+| Verbo  | Endpoint                | Parâmetro | Body          |
+|--------|-------------------------|-----------|---------------|
+| POST   | /Saller/post/           | N/A       | Schema Saller |
+| GET    | /Saller/get-all/        | N/A       | N/A           |
+| GET    | /Saller/get-by/{id}     | id        | N/A           |
+| PUT    | /Saller/update/{id}     | id        | Schema Saller |
+| DELETE | /Saller/delete/{id}     | id        | N/A           |
+
+</p>
+</details>
+<br>
+
+O schema (model) dos endpoitns, são utilizado para passar os campados exigidos, como no verbo POST e PUT.
 
 Todas solicitações como GET, POST, PUT e DELETE que correspondem como CREATE, READ, UPDATE e DELETE (CRUD) estão funcionando.
 
-Utilizando o Swagger:
+Utilizando no Swagger:
 
 ![preview1 img](/docs/img/preview02.png)
 
 ## ⌨ | Comandos
 
-| **Comandos**                                    |                                              **Descrição**|
+| **Comandos**                                   |                                              **Descrição**|
 |------------------------------------------------|------------------------------------------------------------|
 |                                  `dotnet build`|                Constroi o projeto e todas suas dependências|
 |                                    `dotnet run`|                                            Inicia o projeto|
 |                     `dotnet ef database update`| Comando para criar ou atualizar o esquema do banco de dados|
-|   `dotnet ef migrations add NomeDaMigraçãoAqui`| Crianção de suas migrations, servindo para criar, atualizar ou excluir suas tabelas ou campos de determinada tabela.                                                         |
+|   `dotnet ef migrations add NomeDaMigraçãoAqui`| Crianção de suas migrations, servindo para criar, atualizar ou excluir suas tabelas ou campos de determinada tabela.|
 
 <b>Segue a lista de commits para verificar o que foi implementado e alterado!</b>
 
