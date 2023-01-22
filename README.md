@@ -31,7 +31,7 @@ Assim como um enum, que me serve para ter o status do processo das vendas sendo 
 - DELIVERED (Entregue) = 3.
 - CANCELED (Cancelado) = 4.
 
-Os enumerados tem uma tratativa espacial na hora de sua atualização:
+Os enumerados tem uma tratativa especial na hora de sua atualização:
 
     De: AWAITING_PAYMENT    Para: APPROVED_PAYMENT
     De: AWAITING_PAYMENT    Para: CANCELED
