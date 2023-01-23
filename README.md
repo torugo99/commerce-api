@@ -120,7 +120,7 @@ Ex: 02
 </p>
 </details>
 
-### 🌐 | EndPoints:
+### 🌐 | Endpoints:
 Os endpoint esperados estão funcinando perfeitamente como o esperado.
 
 <details><summary>Endpoints de Product</summary>
