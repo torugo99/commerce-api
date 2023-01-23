@@ -119,7 +119,6 @@ Ex: 02
 ```
 </p>
 </details>
-<br>
 
 ### 🌐 | EndPoints:
 Os endpoint esperados estão funcinando perfeitamente como o esperado.
@@ -165,7 +164,6 @@ Os endpoint esperados estão funcinando perfeitamente como o esperado.
 
 </p>
 </details>
-<br>
 
 O schema (model) dos endpoitns, são utilizado para passar os campos exigidos, como no verbo POST e PUT.
 
