@@ -2,7 +2,7 @@
 
 ## 💻 | Projeto: Construindo uma API Commerce simples.
 
-Seja bem vindo, esse projeito foi feito no intuido de ajudar um amigo um pouco com o C#, aqui busco ser bem rudimentar possível.
+Seja bem vindo, esse projeto foi feito no intuito de ajudar um amigo um pouco com o C#, aqui busco ser bem rudimentar possível.
 
 - Colocando em prática alguns conceitos e utilizando o EF.
 - Gerando seeds para ter o que consumir quando iniciar a aplicação.
@@ -167,7 +167,7 @@ Os endpoint esperados estão funcinando perfeitamente como o esperado.
 </details>
 <br>
 
-O schema (model) dos endpoitns, são utilizado para passar os campados exigidos, como no verbo POST e PUT.
+O schema (model) dos endpoitns, são utilizado para passar os campos exigidos, como no verbo POST e PUT.
 
 Todas solicitações como GET, POST, PUT e DELETE que correspondem como CREATE, READ, UPDATE e DELETE (CRUD) estão funcionando.
 
