@@ -121,7 +121,7 @@ Ex: 02
 </details>
 
 ### 🌐 | Endpoints:
-Os endpoint esperados estão funcinando perfeitamente como o esperado.
+Os endpoint esperados estão funcionando perfeitamente como o esperado.
 
 <details><summary>Endpoints de Product</summary>
 <p>
